@@ -26,6 +26,12 @@ def detect_encoding(content: ContentBytes) -> str:
         match = from_bytes(bytes(content)).best()
         if match:
             encoding = match.encoding
+            if encoding == 'johab':
+                try:
+                    bytes(content).decode('big5', 'strict')
+                    encoding = 'big5'
+                except (UnicodeDecodeError, LookupError):
+                    pass
     return encoding
 
 
