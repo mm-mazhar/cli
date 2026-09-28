@@ -52,7 +52,10 @@ COMMANDS = {
                 *CLI_SESSION_UPGRADE_FLAGS
             ],
         }
-    }
+    },
+    'hello': [
+        'Print a hello message'
+    ]
 }
 
 

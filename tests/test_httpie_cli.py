@@ -136,3 +136,10 @@ def test_cli_export(load_func, extra_options):
     response = httpie('cli', 'export-args', *extra_options)
     assert response.exit_status == ExitStatus.SUCCESS
     assert load_func(response)['version'] == PARSER_SPEC_VERSION
+
+
+@pytest.mark.requires_installation
+def test_hello():
+    result = httpie('hello')
+    assert result.exit_status == ExitStatus.SUCCESS
+    assert 'Hello from HTTPie!' in result
